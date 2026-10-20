@@ -1,0 +1,44 @@
+DESCRIBE: Ablation_experiment  # Parent directory name for experiment results.
+INFO: "try" # Experiment note.
+
+Data:
+  MS_CHANNELS: 16
+  CFA_SIZE : 4
+
+TRAIN:  # Training settings.
+  EPOCH: 300  # Number of training epochs.
+  LR: 0.005  # Learning rate.
+  BATCH_SIZE: 4  # Batch size.
+  SAVE_INTERVAL: 1  # Checkpoint interval in epochs.
+  VALIDATION_INTERVAL: 1  # Validation interval in epochs.
+  DEVICE: cuda:0  # Compute device.
+  SEED: 123  # Random seed.
+  TRAIN_PACKED_H5: "./BeyondRGB_Data/train_packed_samsung.h5"
+  VAL_PACKED_H5: "./BeyondRGB_Data/val_packed_samsung.h5"
+
+  LOSS: # Loss settings.
+    W1: 1
+    W2: 30
+    W3: 0.0002
+
+  OPTIMIZER:  # Optimizer settings; add other optimizers and their parameters as needed.
+    ADAM: true
+
+  DATASET_PATH: '../beyondRGB'  # Dataset root directory.
+  NUM_WORKERS: 4  # Number of data-loading workers.
+  MS_SIZE: 256 # Multispectral image size.
+  RGB_SIZE: 256 # RGB image size.
+  RGB_CAMERA: 'oppo' # RGB camera: 'oppo' or 'samsung'.
+  NUMBER: 1 # Number of random crops.
+  # N_BINS: 128 # Number of bins along each log-chromaticity histogram axis.
+  # HIST_RANGE: [-3.2, 3.2] # Log-chromaticity histogram range.
+
+MODEL:
+  NAME: 'FusionSPDNet' #
+  MS_CHANNELS: 16   # 16 multispectral input channels.
+  OUT_CHANNELS: 36   # 36 output spectral values.
+
+TEST:
+  ROOT_PATH: './beyondRGB/outdoor'
+  BATCH_SIZE: 16
+  DEVICE: cuda:0  # Compute device.

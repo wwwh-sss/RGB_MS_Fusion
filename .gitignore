@@ -1,0 +1,29 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Datasets, model weights, and generated experiment outputs
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.ckpt
+Result/
+BeyondRGB_experiment/
+runs/
